@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Market Watch — Sample Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/market_watch.css">
+<script src="assets/sample_market_data.js"></script>
+</head>
+<body>
+
+<div class="main">
+
+  <!-- KPI Row -->
+  <div class="kpi-row" id="kpi-row"></div>
+
+  <!-- Body: chart (left) + decision layer (right) — frozen above table -->
+  <div class="mw-body">
+
+    <!-- Left: chart -->
+    <div style="display:flex;flex-direction:column;gap:14px;min-width:0;">
+      <div class="market-chart-wrap">
+        <div class="chart-section market-chart-inner">
+          <div class="chart-label">Market Watch<span class="chart-label-date" id="mw-snapshot"></span></div>
+          <div class="chart-legend">
+            <div class="cl-item"><div class="cl-line" style="background:#D9B5FF;height:2px;"></div> Median Price</div>
+            <div class="cl-item"><div class="cl-dot" style="background:#0f766e;"></div> Sales Volume</div>
+            <div class="cl-item"><div style="width:18px;height:0;border-top:2px dashed #FFCD0E;margin-top:1px;flex-shrink:0;"></div> CPI</div>
+            <div class="cl-item"><div style="width:18px;height:0;border-top:2px dashed #FFFF42;margin-top:1px;flex-shrink:0;"></div> OCR</div>
+            <div class="cl-item"><div style="width:18px;height:0;border-top:2px dashed #9FD3FF;margin-top:1px;flex-shrink:0;"></div> Mtge</div>
+            <div class="cl-item" style="color:#3a4a5c;font-style:italic;font-size:9px;">rate lines normalized for trend only</div>
+          </div>
+          <div class="chart-area">
+            <svg class="chart-svg" id="chart-svg" viewBox="0 0 340 140" preserveAspectRatio="none"></svg>
+          </div>
+          <div class="chart-axis" id="chart-axis"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Rate Snapshot + Developer Decision Layer -->
+    <div class="right-col">
+      <div class="decision-layer">
+        <div id="rate-snapshot"></div>
+        <div id="decision-items"></div>
+      </div>
+    </div>
+
+  </div><!-- /mw-body -->
+
+  <!-- Scroll wrapper — table only -->
+  <div class="mw-scroll-wrap">
+    <div class="mw-register">
+      <div class="panel">
+        <div class="panel-body" style="padding:0;">
+          <div class="mkt-table-wrap">
+            <table class="mkt-table" id="mkt-table">
+              <thead>
+                <tr>
+                  <th id="th-month">Month</th>
+                  <th>CPI</th>
+                  <th>OCR</th>
+                  <th>1Y Mtge</th>
+                  <th>Metro Median</th>
+                  <th>Metro Sales</th>
+                  <th>Inventory</th>
+                  <th>Inv Weeks</th>
+                  <th>DOM</th>
+                  <th>Dist. Median</th>
+                  <th>Dist. Sales</th>
+                  <th>Migration</th>
+                  <th>BC Supply</th>
+                </tr>
+              </thead>
+              <tbody id="mkt-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /mw-scroll-wrap -->
+
+</div><!-- /main -->
+
+<script src="assets/market_watch.js"></script>
+</body>
+</html>
